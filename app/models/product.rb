@@ -3,6 +3,10 @@ class Product < ApplicationRecord
     Supplier.find_by(id: supplier_id)
   end
 
+  def images
+    Image.where(product_id: id)
+  end
+
   validates :name, presence: true
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0 }
